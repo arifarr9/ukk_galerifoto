@@ -7,6 +7,7 @@ if ($_SESSION['status'] != 'login') {
     location.href='../index.php';
     </script>";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -17,29 +18,28 @@ if ($_SESSION['status'] != 'login') {
     <title>Website Galeri Foto</title>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
     <style>
-        /* Orange Theme Colors */
         .navbar, .card-header, .modal-header, footer {
-            background-color: #ff5722; /* Primary Orange */
+            background-color: #ff5722; 
             color: white;
         }
         .navbar .navbar-brand, footer p, .nav-link {
             color: white;
         }
         .btn-outline-danger {
-            border-color: #ff5722; /* Orange */
-            color: #ff5722; /* Orange */
+            border-color: #ff5722; 
+            color: #ff5722; 
         }
         .btn-outline-danger:hover {
-            background-color: #e64a19; /* Darker Orange on hover */
+            background-color: #e64a19; 
             color: white;
         }
         .btn-primary {
-            background-color: #ff5722; /* Primary Orange */
-            border-color: #ff5722; /* Border to match */
+            background-color: #ff5722; 
+            border-color: #ff5722; 
         }
         .btn-danger {
-            background-color: #d32f2f; /* Red for delete button */
-            border-color: #d32f2f; /* Red border */
+            background-color: #d32f2f; 
+            border-color: #d32f2f; 
         }
     </style>
 </head>
@@ -57,7 +57,6 @@ if ($_SESSION['status'] != 'login') {
         <a href="foto.php" class="nav-link">Foto</a>
       </div>
       <a href="../config/aksi_logout.php" class="btn btn-outline-dark m-1">LOGOUT</a>
-      <!-- <a href="../config/aksi_logout.php" class="btn btn-outline-light m-1">LOGOUT</a> -->
     </div>
   </div>
 </nav>

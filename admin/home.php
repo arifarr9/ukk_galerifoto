@@ -8,6 +8,7 @@ if ($_SESSION['status'] != 'login') {
     location.href='../index.php';
     </script>";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -19,19 +20,18 @@ if ($_SESSION['status'] != 'login') {
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
     <style>
-        /* Orange Theme */
         body {
-            background-color: #fff3e0; /* Light orange background */
+            background-color: #fff3e0; 
         }
         .navbar, .card-header, .modal-header, footer {
-            background-color: #ff5722; /* Primary Orange */
+            background-color: #ff5722; 
             color: white;
         }
         .navbar .navbar-brand, footer p, .nav-link {
             color: white;
         }
         .btn-outline-light {
-            color: #ff5722; /* Primary Orange */
+            color: #ff5722;
             border-color: #ff5722;
         }
         .btn-outline-light:hover {
@@ -39,19 +39,19 @@ if ($_SESSION['status'] != 'login') {
             color: white;
         }
         .btn-primary, .btn-outline-primary {
-            background-color: #ff5722; /* Primary Orange */
+            background-color: #ff5722; 
             border-color: #ff5722;
             color: white;
         }
         .btn-danger {
-            background-color: #d32f2f; /* Red for delete button */
+            background-color: #d32f2f; 
             border-color: #d32f2f;
         }
         .card-footer a {
             color: #ff5722;
         }
         .card-footer a:hover {
-            color: #e64a19; /* Darker Orange */
+            color: #e64a19; 
         }
     </style>
 </head>
@@ -69,7 +69,6 @@ if ($_SESSION['status'] != 'login') {
         <a href="foto.php" class="nav-link">Foto</a>
       </div>
       <a href="../config/aksi_logout.php" class="btn btn-outline-dark m-1">LOGOUT</a>
-      <!-- <a href="../config/aksi_logout.php" class="btn btn-outline-light m-1">LOGOUT</a> -->
     </div>
   </div>
 </nav>
