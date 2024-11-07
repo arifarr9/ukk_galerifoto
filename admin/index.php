@@ -1,8 +1,14 @@
 <?php 
+// Memulai sesi baru atau melanjutkan sesi yang sudah ada
 session_start();
+
+// Mengimpor konfigurasi koneksi database
 require_once ('../config/koneksi.php');
+
+// Mendapatkan ID pengguna dari sesi
 $userid = $_SESSION['userid'];
-// Cek apakah user sudah login
+
+// Memeriksa apakah pengguna sudah login
 if ($_SESSION['status'] != 'login') {
     echo "<script>
     alert('Anda Belum Login');
@@ -11,7 +17,7 @@ if ($_SESSION['status'] != 'login') {
     exit();
 }
 
-// Cek apakah user memiliki peran admin
+// Memeriksa apakah pengguna memiliki peran sebagai admin
 $role = $_SESSION['role'];
 if ($role != 'admin') {
     echo "<script>
@@ -25,12 +31,16 @@ if ($role != 'admin') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Tag meta dasar untuk responsif dan pengaturan karakter -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Galeri Foto</title>
+
+    <!-- Mengimpor file CSS eksternal untuk Bootstrap dan ikon font -->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
     <style>
+        /* Pengaturan gaya untuk tampilan halaman */
         body {
             background-color: #fff3e0;
         }
@@ -87,15 +97,18 @@ if ($role != 'admin') {
 <div class="container mt-2">
   <div class="row">
     <?php 
+    // Mengambil data dari tabel foto dan menggabungkan dengan tabel user dan album
     $query = mysqli_query($koneksi, "SELECT * FROM foto INNER JOIN user ON foto.userid=user.userid INNER JOIN album ON foto.albumid=album.albumid");
     while ($data = mysqli_fetch_array($query)) {
     ?>
     <div class="col-md-3 mt-2">
         <a type="button" data-bs-toggle="modal" data-bs-target="#komentar<?php echo $data['fotoid'] ?>">
           <div class="card mb-2 bg-dark text-light">
+          <!-- Menampilkan gambar foto -->
           <img src="../assets/img/<?php echo $data['lokasifile'] ?>" class="card-img-top" title="<?php echo $data['judulfoto'] ?>" style="height: 12rem; object-fit: cover;">
             <div class="card-footer text-center">
                 <?php 
+                // Mengecek apakah pengguna sudah menyukai foto ini
                 $fotoid = $data['fotoid'];
                 $ceksuka = mysqli_query($koneksi, "SELECT * FROM likefoto WHERE fotoid='$fotoid' AND userid='$userid'");
                 if (mysqli_num_rows($ceksuka) == 1) { ?>
@@ -103,11 +116,13 @@ if ($role != 'admin') {
                 <?php } else { ?>
                   <a href="../config/proses_like.php?fotoid=<?php echo $data['fotoid'] ?>" type="submit" name="suka"><i class="fa-regular fa-heart m-1"></i></a>
                 <?php }
+                // Menghitung jumlah "Suka" pada foto
                 $like = mysqli_query($koneksi, "SELECT * FROM likefoto WHERE fotoid='$fotoid'");
                 echo mysqli_num_rows($like) . ' Suka';
                 ?>
                 <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#komentar<?php echo $data['fotoid'] ?>"><i class="fa-regular fa-comment"></i></a>
                 <?php
+                // Menghitung jumlah komentar pada foto
                 $jmlkomen = mysqli_query($koneksi, "SELECT * FROM komentarfoto WHERE fotoid='$fotoid'");
                 echo mysqli_num_rows($jmlkomen) . ' Komentar';
                 ?>
@@ -115,6 +130,7 @@ if ($role != 'admin') {
           </div>
         </a>
 
+        <!-- Modal untuk menampilkan komentar foto -->
         <div class="modal fade" id="komentar<?php echo $data['fotoid'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -138,6 +154,7 @@ if ($role != 'admin') {
                         </p>
                         <hr>
                         <?php
+                        // Mengambil komentar pada foto dari database
                         $komentar = mysqli_query($koneksi, "SELECT * FROM komentarfoto INNER JOIN user ON komentarfoto.userid=user.userid WHERE komentarfoto.fotoid='$fotoid'");
                         while($row = mysqli_fetch_array($komentar)) {
                         ?>
@@ -154,6 +171,7 @@ if ($role != 'admin') {
                           </p>
                         <?php } ?>
                         <hr>
+                        <!-- Form untuk menambah komentar -->
                         <div class="sticky-bottom">
                           <form action="../config/proses_komentar.php" method="POST">
                             <div class="input-group">
@@ -179,6 +197,7 @@ if ($role != 'admin') {
   </div>
 </div>
 
+<!-- Menyertakan file JavaScript untuk Bootstrap -->
 <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,7 +1,10 @@
 <?php 
+// Memulai sesi atau melanjutkan sesi yang ada
 session_start();
 require_once ('../config/koneksi.php');
 $userid = $_SESSION['userid'];
+
+// Memeriksa status login pengguna
 if ($_SESSION['status'] != 'login') {
     echo "<script>
     alert('Anda Belum Login');
@@ -10,7 +13,7 @@ if ($_SESSION['status'] != 'login') {
     exit();
 }
 
-// Cek apakah user memiliki peran admin
+// Memeriksa apakah pengguna memiliki peran sebagai admin
 $role = $_SESSION['role'];
 if ($role != 'admin') {
     echo "<script>
@@ -18,20 +21,22 @@ if ($role != 'admin') {
     location.href='../index.php';
     </script>";
     exit();
-// Cek apakah user sudah login
-
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Tag meta dasar untuk tampilan responsif dan pengaturan karakter -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Galeri Foto</title>
+
+    <!-- Mengimpor file CSS eksternal untuk Bootstrap dan ikon font -->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
     <style>
+        /* Pengaturan gaya tampilan halaman */
         body {
             background-color: #fff3e0; 
         }
@@ -88,6 +93,7 @@ if ($role != 'admin') {
 <div class="container mt-3">
     <p>Album :</p>
     <?php
+    // Mengambil data album yang dimiliki pengguna dari database
     $album = mysqli_query($koneksi, "SELECT * FROM album WHERE userid='$userid'");
     while($row = mysqli_fetch_array($album)){ ?>
     <a href="home.php?albumid=<?php echo $row['albumid'] ?>" class="btn btn-outline-primary m-1"><?php echo $row['namaalbum'] ?></a>
@@ -95,6 +101,7 @@ if ($role != 'admin') {
    
     <div class="row">
     <?php 
+    // Memeriksa apakah album telah dipilih dan mengambil foto berdasarkan album tersebut
     if(isset($_GET['albumid'])) {
         $albumid = $_GET['albumid'];
         $query = mysqli_query($koneksi, "SELECT * FROM foto WHERE userid='$userid' AND albumid='$albumid'");
@@ -104,6 +111,7 @@ if ($role != 'admin') {
                 <img style="height: 12rem;" src="../assets/img/<?php echo $data['lokasifile'] ?>" class="card-img-top" title="<?php echo $data['judulfoto'] ?>">
                 <div class="card-footer text-center">
                     <?php 
+                    // Mengecek apakah pengguna sudah menyukai foto ini
                     $fotoid = $data['fotoid'];
                     $ceksuka = mysqli_query($koneksi, "SELECT * FROM likefoto WHERE fotoid='$fotoid' AND userid='$userid'");
                     if (mysqli_num_rows($ceksuka) == 1) { ?>
@@ -111,6 +119,7 @@ if ($role != 'admin') {
                      <?php } else { ?>
                      <a href="../config/proses_like.php?fotoid=<?php echo $data['fotoid'] ?>" type="submit" name="suka"><i class="fa-regular fa-heart m-1"></i></a>
                      <?php }
+                    // Menghitung jumlah "Suka" pada foto
                     $like = mysqli_query($koneksi, "SELECT * FROM likefoto WHERE fotoid='$fotoid'");
                     echo mysqli_num_rows($like). ' Suka';
                     ?>
@@ -120,6 +129,7 @@ if ($role != 'admin') {
         </div>
 
     <?php } } else { 
+        // Jika tidak ada album yang dipilih, menampilkan semua foto pengguna
         $query = mysqli_query($koneksi, "SELECT * FROM foto WHERE userid='$userid'");
         while ($data = mysqli_fetch_array($query)) {
     ?>
@@ -128,6 +138,7 @@ if ($role != 'admin') {
                 <img style="height: 12rem;" src="../assets/img/<?php echo $data['lokasifile'] ?>" class="card-img-top" title="<?php echo $data['judulfoto'] ?>">
                 <div class="card-footer text-center">
                     <?php 
+                    // Mengecek apakah pengguna sudah menyukai foto ini
                     $fotoid = $data['fotoid'];
                     $ceksuka = mysqli_query($koneksi, "SELECT * FROM likefoto WHERE fotoid='$fotoid' AND userid='$userid'");
                     if (mysqli_num_rows($ceksuka) == 1) { ?>
@@ -135,6 +146,7 @@ if ($role != 'admin') {
                      <?php } else { ?>
                      <a href="../config/proses_like.php?fotoid=<?php echo $data['fotoid'] ?>" type="submit" name="suka"><i class="fa-regular fa-heart m-1"></i></a>
                      <?php }
+                    // Menghitung jumlah "Suka" pada foto
                     $like = mysqli_query($koneksi, "SELECT * FROM likefoto WHERE fotoid='$fotoid'");
                     echo mysqli_num_rows($like). ' Suka';
                     ?>
@@ -146,6 +158,7 @@ if ($role != 'admin') {
     </div>
 </div>
 
+<!-- Menyertakan file JavaScript untuk Bootstrap -->
 <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
 </body>
 </html>

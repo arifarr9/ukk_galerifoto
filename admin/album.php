@@ -1,24 +1,25 @@
-<?php 
+<?php  
+// Memulai sesi pengguna
 session_start();
 require_once ('../config/koneksi.php');
 
-// Cek apakah user sudah login
+// Cek apakah pengguna sudah login
 if ($_SESSION['status'] != 'login') {
     echo "<script>
     alert('Anda Belum Login');
     location.href='../index.php';
     </script>";
-    exit();
+    exit(); // Hentikan eksekusi jika pengguna belum login
 }
 
-// Cek apakah user memiliki peran admin
+// Cek apakah pengguna memiliki peran admin
 $role = $_SESSION['role'];
 if ($role != 'admin') {
     echo "<script>
     alert('Anda tidak memiliki izin untuk mengakses halaman ini.');
     location.href='../index.php';
     </script>";
-    exit();
+    exit(); // Hentikan eksekusi jika pengguna tidak memiliki peran admin
 }
 ?>
 
@@ -28,8 +29,10 @@ if ($role != 'admin') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Galeri Foto</title>
+    <!-- Memuat file CSS untuk bootstrap -->
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
     <style>
+        /* Styling untuk navbar, tombol, dan elemen lainnya */
         .navbar, .card-header, .modal-header, footer {
             background-color: #ff5722; 
             color: white;
@@ -64,10 +67,12 @@ if ($role != 'admin') {
     </button>
     <div class="collapse navbar-collapse mt-2" id="navbarNavAltMarkup">
       <div class="navbar-nav me-auto">
+        <!-- Link navigasi ke halaman utama, album, dan foto -->
         <a href="home.php" class="nav-link">Home</a>
         <a href="album.php" class="nav-link">Album</a>
         <a href="foto.php" class="nav-link">Foto</a>
       </div>
+      <!-- Tombol logout -->
       <a href="../config/aksi_logout.php" class="btn btn-outline-dark m-1">LOGOUT</a>
     </div>
   </div>
@@ -75,6 +80,7 @@ if ($role != 'admin') {
 
 <div class="container mt-3">
     <div class="row">
+        <!-- Form tambah album -->
         <div class="col-md-4">
         <div class="card">
             <div class="card-header">Tambah Album</div>
@@ -90,6 +96,7 @@ if ($role != 'admin') {
         </div>
         </div>
 
+        <!-- Tabel data album -->
         <div class="col-md-8">
         <div class="card">
             <div class="card-header">Data Album</div>
@@ -109,6 +116,7 @@ if ($role != 'admin') {
                         <?php 
                         $no = 1;
                         $userid = $_SESSION['userid'];
+                        // Mengambil data album beserta informasi pengguna dari database
                         $sql = mysqli_query($koneksi,"SELECT * FROM album INNER JOIN user ON album.userid=user.userid");
                         while($data = mysqli_fetch_array($sql)) {
                         ?>
@@ -119,10 +127,12 @@ if ($role != 'admin') {
                             <td> <?php echo $data['tanggalbuat'] ?></td>
                             <td> <?php echo $data['namalengkap'] ?></td>
                             <td>
+                                <!-- Tombol edit untuk album -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo$data['albumid'] ?>">
                                     Edit
                                 </button>
 
+                                <!-- Modal form edit data album -->
                                 <div class="modal fade" id="edit<?php echo$data['albumid'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -146,10 +156,12 @@ if ($role != 'admin') {
                                   </div>
                                 </div>       
 
+                                <!-- Tombol hapus untuk album -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['albumid'] ?>">
                                     Hapus
                                 </button>
 
+                                <!-- Modal konfirmasi hapus data album -->
                                 <div class="modal fade" id="hapus<?php echo$data['albumid'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
@@ -180,11 +192,12 @@ if ($role != 'admin') {
     </div>
 </div>
 
+<!-- Footer dengan informasi hak cipta -->
 <footer class="d-flex justify-content-center border-top mt-3">
     <p>&copy; UKK RPL 2024 | arief</p>
 </footer>
 
-    
+<!-- Memuat file JavaScript untuk bootstrap -->
 <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
 </body>
 </html>

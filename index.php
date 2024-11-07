@@ -13,7 +13,7 @@
 
         /* Background biru langit */
         body {
-            background: linear-gradient(120deg, #87CEEB, #00BFFF);
+            background: linear-gradient(120deg, lightblue, lightblue);
             background-attachment: fixed;
             background-size: cover;
             color: #333333; /* Warna teks lebih gelap agar kontras dengan latar belakang */
