@@ -1,17 +1,27 @@
 <?php 
 session_start();
 require_once ('../config/koneksi.php');
-$role= $_SESSION['role'];
 $userid = $_SESSION['userid'];
+// Cek apakah user sudah login
 if ($_SESSION['status'] != 'login') {
     echo "<script>
     alert('Anda Belum Login');
     location.href='../index.php';
     </script>";
+    exit();
+}
+
+// Cek apakah user memiliki peran admin
+$role = $_SESSION['role'];
+if ($role != 'admin') {
+    echo "<script>
+    alert('Anda tidak memiliki izin untuk mengakses halaman ini.');
+    location.href='../index.php';
+    </script>";
+    exit();
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

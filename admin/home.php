@@ -7,8 +7,20 @@ if ($_SESSION['status'] != 'login') {
     alert('Anda Belum Login');
     location.href='../index.php';
     </script>";
+    exit();
 }
 
+// Cek apakah user memiliki peran admin
+$role = $_SESSION['role'];
+if ($role != 'admin') {
+    echo "<script>
+    alert('Anda tidak memiliki izin untuk mengakses halaman ini.');
+    location.href='../index.php';
+    </script>";
+    exit();
+// Cek apakah user sudah login
+
+}
 ?>
 
 <!DOCTYPE html>

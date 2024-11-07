@@ -88,43 +88,43 @@
 <div class="row justify-content-start mt-3">
     <div class="col-md-3">
         <div class="card">
-        <img src="assets/img/1361544539.papandayan.jpg" class="card-img-top w-100" style="height: 30rem;">
-            <!-- <div class="card-footer text-center">
+        <img src="assets/img/1361544539.papandayan.jpg" class="card-img-top w-100" style="height: 10rem;">
+            <div class="card-footer text-center">
                 <a href="#" style="color: black;"><i class="fa-regular fa-heart m-1"></i>G.PAPANDAYAN</a>
                 <a href="#"><i class="fa-regular fa-comment"></i></a>
-            </div> -->
+            </div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card">
-            <img src="assets/img/1250882891.merapi.jpg" class="card-img-top w-100" style="height: 30rem;">
-            <!-- <div class="card-footer text-center">
+            <img src="assets/img/1250882891.merapi.jpg" class="card-img-top w-100" style="height: 10rem;">
+            <div class="card-footer text-center">
                 <a href="#" style="color: black;"><i class="fa-regular fa-heart m-1"></i>G.MERAPI</a>
                 <a href="#"><i class="fa-regular fa-comment"></i></a>
-            </div> -->
+            </div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card">
-            <img src="assets/img/1276355567.sindoro.jpg" class="card-img-top w-100" style="height: 30rem;">
-            <!-- <div class="card-footer text-center">
+            <img src="assets/img/1276355567.sindoro.jpg" class="card-img-top w-100" style="height: 10rem;">
+            <div class="card-footer text-center">
                 <a href="#" style="color: black;"><i class="fa-regular fa-heart m-1"></i>G.SINDORO</a>
                 <a href="#"><i class="fa-regular fa-comment"></i></a>
-            </div> -->
+            </div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card">
-            <img src="assets/img/494936806.bromo.jpg" class="card-img-top w-100" style="height: 30rem;">
-            <!-- <div class="card-footer text-center">
+            <img src="assets/img/494936806.bromo.jpg" class="card-img-top w-100" style="height: 10rem;">
+            <div class="card-footer text-center">
                 <a href="#" style="color: black;"><i class="fa-regular fa-heart m-1"></i>G.BROMO</a>
                 <a href="#"><i class="fa-regular fa-comment"></i></a>
-            </div> -->
+            </div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card">
-            <img src="assets/img/rinjani.jpg" class="card-img-top w-100" style="height: 30rem;">
+            <img src="assets/img/rinjani.jpg" class="card-img-top w-100" style="height: 10rem;">
             <div class="card-footer text-center">
                 <a href="#" style="color: black;"><i class="fa-regular fa-heart m-1"></i>G.RINJANI</a>
                 <a href="#"><i class="fa-regular fa-comment"></i></a>
@@ -133,7 +133,7 @@
     </div>
     <div class="col-md-3">
         <div class="card">
-            <img src="assets/img/merbabu.jpg" class="card-img-top w-100" style="height: 30rem;">
+            <img src="assets/img/merbabu.jpg" class="card-img-top w-100" style="height: 10rem;">
             <div class="card-footer text-center">
                 <a href="#" style="color: black;"><i class="fa-regular fa-heart m-1"></i>G.MERBABU</a>
                 <a href="#"><i class="fa-regular fa-comment"></i></a>
@@ -142,7 +142,7 @@
     </div>
     <div class="col-md-3">
         <div class="card">
-            <img src="assets/img/salak.jpg" class="card-img-top w-100" style="height: 30rem;">
+            <img src="assets/img/salak.jpg" class="card-img-top w-100" style="height: 10rem;">
             <div class="card-footer text-center">
                 <a href="#" style="color: black;"><i class="fa-regular fa-heart m-1"></i>G.SALAK</a>
                 <a href="#"><i class="fa-regular fa-comment"></i></a>
@@ -151,7 +151,7 @@
     </div>
     <div class="col-md-3">
         <div class="card">
-            <img src="assets/img/prau.jpg" class="card-img-top w-100" style="height: 30rem;">
+            <img src="assets/img/prau.jpg" class="card-img-top w-100" style="height: 10rem;">
             <div class="card-footer text-center">
                 <a href="#" style="color: black;"><i class="fa-regular fa-heart m-1"></i>G.PRAU</a>
                 <a href="#"><i class="fa-regular fa-comment"></i></a>
