@@ -95,6 +95,10 @@
                         <label class="form-label">Password</label>
                         <input type="password" name="password" class="form-control" required>
                     </div>
+                    <!-- <div class="mb-3">
+                        <label class="form-label">Konfirmasi Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div> -->
                     <div class="d-grid mt-2">
                         <button class="btn btn-primary" type="submit" name="kirim">Masuk</button>
                     </div>

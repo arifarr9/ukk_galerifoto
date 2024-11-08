@@ -20,47 +20,51 @@ if ($_SESSION['status'] != 'login') {
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
     <style>
-    /* Warna Hijau Stabillo */
+    /* Warna Hitam */
     body, .navbar, footer {
-        background-color: #39FF14; /* Hijau Stabilo */
+        background-color: #1b1b1b; /* Hitam pekat untuk background */
+        color: #e0e0e0; /* Teks abu-abu terang untuk kontras */
     }
     .navbar, .card-footer, .btn-outline-primary, .btn-outline-danger, footer, .modal-header {
-        background-color: #2bb300; /* Hijau gelap untuk navbar dan tombol */
+        background-color: #333333; /* Hitam arang untuk navbar, tombol, dll */
         color: #ffffff; /* Teks putih untuk kontras */
     }
     .navbar .navbar-brand, .nav-link, footer p, .card-footer i.fa-heart, .modal-header {
         color: #ffffff; /* Teks putih */
     }
     .btn-outline-primary, .btn-outline-danger {
-        border-color: #2bb300; /* Border hijau stabilo */
-        color: #2bb300; /* Teks hijau stabilo */
+        border-color: #606060; /* Border abu-abu */
+        color: #606060; /* Teks abu-abu */
     }
     .btn-outline-primary:hover, .btn-outline-danger:hover {
-        background-color: #2bb300; /* Background hijau stabilo saat hover */
+        background-color: #606060; /* Background abu-abu saat hover */
         color: #ffffff; /* Teks putih saat hover */
     }
     .card-footer i.fa-heart {
-        color: #d32f2f; /* Warna merah untuk ikon hati */
+        color: #ff4d4d; /* Warna merah cerah untuk ikon hati */
     }
     .card-footer i.fa-regular {
-        color: #ffffff; /* Warna putih untuk ikon biasa */
+        color: #e0e0e0; /* Warna abu-abu terang untuk ikon biasa */
     }
     .badge.bg-secondary, .badge.bg-primary {
-        background-color: #2bb300; /* Badge hijau stabilo */
+        background-color: #444444; /* Badge abu-abu gelap */
         color: #ffffff;
     }
     .modal-content {
-        border: 2px solid #2bb300; /* Border hijau stabilo pada modal */
+        background-color: #333333; /* Background hitam pada modal */
+        border: 2px solid #606060; /* Border abu-abu pada modal */
+        color: #e0e0e0; /* Teks abu-abu terang */
     }
     /* Menyelaraskan kartu dan row ke kiri */
     .card {
         margin-left: 0;
+        background-color: #262626; /* Warna hitam untuk kartu */
+        color: #e0e0e0; /* Teks abu-abu terang */
     }
     .container .row {
         justify-content: flex-start;
     }
 </style>
-
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">

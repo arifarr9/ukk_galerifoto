@@ -74,9 +74,10 @@ if ($_SESSION['status'] != 'login') {
                         <tr>
                             <th>No</th>
                             <th>Foto</th>
-                            <th>Judul Foto</th>
                             <th>Deskripsi</th>
+                            <th>Judul Foto</th>
                             <th>Tanggal</th>
+                            <th>Foto</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>

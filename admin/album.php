@@ -106,7 +106,7 @@ if ($role != 'admin') {
                         <tr>
                             <th>No</th>
                             <th>Nama Album</th>
-                            <th>Deskripsi</th>
+                            <th>Deskripsi</th> 
                             <th>Tanggal</th>
                             <th>Akun</th>
                             <th>Aksi</th>
